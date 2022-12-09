@@ -3,23 +3,33 @@
 */
 
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/Unit-5-08-JS/sw.js", {
+    scope: "/Unit-5-08-JS/",
   })
 }
 
-;("use strict")
+"use strict"
 
 function calculate() {
-  const length = parseInt(document.getElementById("pay").value)
-  const width = parseInt(document.getElementById("pay2").value)
+  const firstnumber = parseInt(document.getElementById("pay").value);
+  const secondnumber = parseInt(document.getElementById("pay2").value);
+  var addedNumber = 0;
+  var answer = firstnumber;
+  var remaining = 0;
 
-  const area = length * width * 0.18
-  const perimeter = length * width * (1.0 - 0.18)
-  const TAX_RATE = 0.18
+  if (firstnumber > 0 && secondnumber > 0) {
+    while (answer >= secondnumber) {
+      addedNumber = addedNumber + 1;
+      answer = answer - secondnumber;
+    }
+  }
 
-  document.getElementById("area").innerHTML =
-    "The governemnt will take: " + area + "$"
-  document.getElementById("perimeter").innerHTML =
-    "your pay will be: " + perimeter + "$"
+  if (answer == 0) {
+    remaining = 0;
+  } else if (answer != 0) {
+    remaining = answer + secondnumber;
+  }
+
+  document.getElementById("answers").innerHTML =
+    firstnumber +  " ÷ " + secondnumber + " = " + addedNumber + " And the remainder answer is " + remaining;
 }
