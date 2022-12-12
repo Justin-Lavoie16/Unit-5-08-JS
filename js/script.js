@@ -8,34 +8,21 @@ if (navigator.serviceWorker) {
   })
 }
 
-;("use strict")
+"use strict"
 
 function calculate() {
-  const firstnumber = parseInt(document.getElementById("pay").value)
-  const secondnumber = parseInt(document.getElementById("pay2").value)
-  var addedNumber = 0
-  var answer = firstnumber
-  var remaining = 0
-
-  if (firstnumber > 0 && secondnumber > 0) {
-    while (answer >= secondnumber) {
-      addedNumber = addedNumber + 1
-      answer = answer - secondnumber
+  const number1 = parseInt(document.getElementById("pay").value);
+  const number2 = parseInt(document.getElementById("pay2").value);
+  var age = 0;
+  var answer = number1;
+  
+  if (number1 > 0 && number2 > 0) {
+    while (answer >= number2) {
+      age = age + 1;
+      answer = answer - number2;
     }
   }
 
-  if (answer == 0) {
-    remaining = 0
-  } else if (answer != 0) {
-    remaining = answer + secondnumber
-  }
-
   document.getElementById("answers").innerHTML =
-    firstnumber +
-    " ÷ " +
-    secondnumber +
-    " = " +
-    addedNumber +
-    " And the remainder answer is " +
-    remaining
+    number1 +  " ÷ " + number2 + " = " + age;
 }
